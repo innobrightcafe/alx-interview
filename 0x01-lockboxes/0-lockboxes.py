@@ -1,17 +1,23 @@
 #!/usr/bin/python3
 def canUnlockAll(boxes):
+    """
+    Determines if all boxes can be opened
+    """
+    if not boxes:
+        return False
+
     n = len(boxes)
-    """
-    Set to track visited boxes
-    """
-    visited = set()
-    stack = [0]  
+    status = ["T"] + ["F"] * (n - 1)
 
-    while stack:
-        box = stack.pop()
-        visited.add(box)
-        for key in boxes[box]:
-            if key not in visited and key < n:
-                stack.append(key)
+    for box in range(n):
+        if status[box] == "T" or box == 0:
+            for key in boxes[box]:
+                if 0 <= key < n and status[key] == "F":
+                    for k in boxes[key]:
+                        if 0 <= k < n:
+                            status[k] = "T"
+                if 0 <= key < n:
+                    status[key] = "T"
 
-    return len(visited) == n
+    return "F" not in status
+

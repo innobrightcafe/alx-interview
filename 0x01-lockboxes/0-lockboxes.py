@@ -20,4 +20,3 @@ def canUnlockAll(boxes):
                     status[key] = "T"
 
     return "F" not in status
-

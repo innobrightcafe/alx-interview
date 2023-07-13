@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-fuction to test minimum operations of the operands
+function to test for the minimum number of operations
 """
 def minOperations(n):
     if n == 1:

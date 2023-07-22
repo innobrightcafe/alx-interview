@@ -23,6 +23,8 @@ def print_statistics(signal, frame):
 
 signal.signal(signal.SIGINT, print_statistics)
 
+print("Enter log lines in the format: <IP Address> - [<date>] \"GET /projects/260 HTTP/1.1\" <status code> <file size>")
+
 for line in sys.stdin:
     try:
         _, _, _, status_code, file_size = line.strip().split(' ')

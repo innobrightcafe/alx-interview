@@ -1,21 +1,20 @@
 #!/usr/bin/python3
 def canUnlockAll(boxes):
-    """
-    Determines if all boxes can be opened
-    """
-    if not boxes:
-        return False
+    """Set to keep track of opened boxes"""
+    opened_boxes = set()
 
-    n = len(boxes)
-    status = ["T"] + ["F"] * (n - 1)
+    """Stack for DFS"""
+    stack = [0]
+    """Start with the first box"""
 
-    for box in range(n):
-        if status[box] == "T" or box == 0:
-            for key in boxes[box]:
-                if 0 <= key < n and status[key] == "F": 
-                    status[key] = "T"
-                    for k in boxes[key]:
-                        if 0 <= k < n:
-                            status[k] = "T"
+    while stack:
+        current_box = stack.pop()
+        opened_boxes.add(current_box)
 
-    return "F" not in status
+        """Explore keys in the current box"""
+        for key in boxes[current_box]:
+            if key not in opened_boxes and key < len(boxes):
+                stack.append(key)
+
+    """Check if all boxes have been opened"""
+    return len(opened_boxes) == len(boxes)

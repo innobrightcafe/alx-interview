@@ -13,9 +13,6 @@ def canUnlockAll(boxes):
         if status[box] == "T" or box == 0:
             for key in boxes[box]:
                 if 0 <= key < n and status[key] == "F":
-                    """
-                    Update the status of the keys directly
-                    """
                     status[key] = "T"
                     for k in boxes[key]:
                         if 0 <= k < n:

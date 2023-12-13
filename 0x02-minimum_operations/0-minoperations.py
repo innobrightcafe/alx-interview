@@ -3,6 +3,7 @@
 function to test for the minimum number of operations
 """
 
+
 def minOperations(n):
     """
     Fuction that gets fewest # of operations needed to result in exactly n H characters
@@ -23,4 +24,3 @@ def minOperations(n):
         # increment start until it evenly-divides n
         start += 1
     return opts
- 

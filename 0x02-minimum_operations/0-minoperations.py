@@ -10,17 +10,17 @@ def minOperations(n):
     # all outputs should be at least 2 char: (min, Copy All => Paste)
     if (n < 2):
         return 0
-    opts, root = 0, 2
-    while root <= n:
-        # if n evenly divides by root
-        if n % root == 0:
-            # total even-divisions by root = total operations
-            opts += root
+    opts, start = 0, 2
+    while start <= n:
+        # if n evenly divides by start
+        if n % start == 0:
+            # total even-divisions by start = total operations
+            opts += start
             # set n to the remainder
-            n = n / root
-            # reduce root to find remaining smaller vals that evenly-divide n
-            root -= 1
-        # increment root until it evenly-divides n
-        root += 1
+            n = n / start
+            # reduce start to find remaining smaller vals that evenly-divide n
+            start -= 1
+        # increment start until it evenly-divides n
+        start += 1
     return opts
  
